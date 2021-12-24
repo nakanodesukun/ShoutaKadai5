@@ -25,11 +25,11 @@ class ViewController: UIViewController {
 
         let firstNum = Float(firstTextField.text ?? "") ?? 0
         let secondNum = Float(secondTextField.text ?? "") ?? 0
-        getValue(firstNum, secondNum)
+       getValue(nume1: firstNum, num2: secondNum)
        
     }
     
-    private func getValue(_ nume1: Float, _ num2: Float) {
+    private func getValue(nume1: Float, num2: Float) {
         if nume1 == 0 {
             let title = "課題５"
             let message = "割られる数を入力して下さい"
