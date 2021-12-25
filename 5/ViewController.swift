@@ -25,12 +25,12 @@ class ViewController: UIViewController {
 
         let firstNum = Float(firstTextField.text ?? "") ?? 0
         let secondNum = Float(secondTextField.text ?? "") ?? 0
-       getValue(nume1: firstNum, num2: secondNum)
+       getValue(num1: firstNum, num2: secondNum)
        
     }
     
-    private func getValue(nume1: Float, num2: Float) {
-        if nume1 == 0 {
+    private func getValue(num1: Float, num2: Float) {
+        if num1 == 0 {
             let title = "課題５"
             let message = "割られる数を入力して下さい"
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
         }
-        resultLabel.text = String(nume1 / num2)
+        resultLabel.text = String(num1 / num2)
     }
 
    
