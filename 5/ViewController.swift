@@ -24,11 +24,10 @@ class ViewController: UIViewController {
             return }
         guard let secondNum = secondTextField.text.flatMap({Float($0)}) else {
             alertMessage(message: Message.divisor)
-            return  }
+            return }
         guard secondNum != 0 else {
             alertMessage(message: Message.nonZero)
-            return
-        }
+            return }
         resultLabel.text = String(firstNum / secondNum)
     }
     
