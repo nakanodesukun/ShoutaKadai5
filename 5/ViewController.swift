@@ -6,6 +6,11 @@
 //
 
 import UIKit
+private enum Message {
+    static let dividend = "割られる数を入力して下さい"
+    static let divisor =  "割る数を入力して下さい"
+    static let nonZero = "割る数には0は代入しないでください"
+}
 
 class ViewController: UIViewController {
     @IBOutlet private weak var firstTextField: UITextField!
@@ -13,40 +18,25 @@ class ViewController: UIViewController {
     @IBOutlet private weak var resultLabel: UILabel!
     
     
-    
     @IBAction private func calculate(_ sender: Any) {
-        value()
-    }
-    
-    private func value() {
-        
-        let firstNum = Float(firstTextField.text ?? "") ?? 0
-        let secondNum = Float(secondTextField.text ?? "") ?? 0
-        getValue(num1: firstNum, num2: secondNum)
-        
-    }
-    
-    private func getValue(num1: Float, num2: Float) {
-        
-        if num1 == 0 {
-            let title = "課題５"
-            let message = "割られる数を入力して下さい"
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-            
-        } else if  num2 == 0 {
-            let title = "課題５"
-            let message = "割る数を入力して下さい"
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+        guard let firstNum = firstTextField.text.flatMap({Float($0)}) else {
+            alertMessage(message: Message.dividend)
+            return }
+        guard let secondNum = secondTextField.text.flatMap({Float($0)}) else {
+            alertMessage(message: Message.divisor)
+            return  }
+        guard secondNum != 0 else {
+            alertMessage(message: Message.nonZero)
+            return
         }
-        resultLabel.text = String(num1 / num2)
+        resultLabel.text = String(firstNum / secondNum)
+    }
+    
+    private func alertMessage(message: String) {
+        let alert = UIAlertController(title: "課題5", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
     
 }
-
-
