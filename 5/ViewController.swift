@@ -9,7 +9,7 @@ import UIKit
 private enum Message {
     static let dividend = "割られる数を入力して下さい"
     static let divisor =  "割る数を入力して下さい"
-    static let nonZero = "割る数には0は代入しないでください"
+    static let nonZero = "割る数には0を代入しないでください"
 }
 
 class ViewController: UIViewController {
