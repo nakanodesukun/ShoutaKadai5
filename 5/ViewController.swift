@@ -10,7 +10,7 @@ import UIKit
 private enum Message {
     static let dividend = "割られる数を入力して下さい"
     static let divisor =  "割る数を入力して下さい"
-    static let nonZero = "割る数には0を代入しないでください"
+    static let nonZero = "割る数には0を入力しないでください"
 }
 
 class ViewController: UIViewController {
@@ -20,12 +20,12 @@ class ViewController: UIViewController {
     
     
     @IBAction private func calculate(_ sender: Any) {
-        guard let firstNum = firstTextField.text.flatMap({Float($0)}) else {
+        guard let firstNum = firstTextField.text.flatMap({ Float($0) }) else {
             alertMessage(message: Message.dividend)
             return
             
         }
-        guard let secondNum = secondTextField.text.flatMap({Float($0)}) else {
+        guard let secondNum = secondTextField.text.flatMap({ Float($0) }) else {
             alertMessage(message: Message.divisor)
             return
             
